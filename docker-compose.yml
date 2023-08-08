@@ -172,7 +172,7 @@ services:
     #depends_on:               # Comment this line if vpn is disabled
     # - vpn                   # Comment this line if vpn is disabled
     #network_mode: service:vpn # Comment this line if vpn is disabled
-     networks:               # Uncomment this line if vpn is disabled
+    networks:               # Uncomment this line if vpn is disabled
        - mynetwork           # Uncomment this line if vpn is disabled
     environment:
       - PUID=1000
@@ -181,7 +181,7 @@ services:
     volumes:
       - prowlarr-config:/config
     ## Uncomment below ports if VPN is disabled.
-     ports:
+    ports:
        - 9696:9696
     restart: unless-stopped
 
