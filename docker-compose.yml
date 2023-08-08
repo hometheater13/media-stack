@@ -67,7 +67,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=UTC
+      - TZ=Asia/Jerusalem
       - USER=admin
       - PASS=nimdatx
 
@@ -97,7 +97,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=UTC
+      - TZ=Asia/Jerusalem
       - WEBUI_PORT=5080
     volumes:
       - qbittorrent-config:/config
@@ -118,7 +118,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=UTC
+      - TZ=Asia/Jerusalem
     ports:
       - 7878:7878
     volumes:
@@ -135,7 +135,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=UTC
+      - TZ=Asia/Jerusalem
     volumes:
       - sonarr-config:/config
       - torrent-downloads:/downloads
@@ -156,7 +156,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=UTC
+      - TZ=Asia/Jerusalem
     volumes:
       - jackett-config:/config
       - jackett-blackhole:/downloads
@@ -177,7 +177,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=UTC
+      - TZ=Asia/Jerusalem
     volumes:
       - prowlarr-config:/config
     ## Uncomment below ports if VPN is disabled.
@@ -185,6 +185,23 @@ services:
     #   - 9696:9696
     restart: unless-stopped
 
+  bazarr:
+    profiles: ["stack-1", "stack-2"]
+    container_name: bazarr
+    image: linuxserver/bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jerusalem
+    volumes:
+      - bazarr-config:/config
+      - bazarr-downloads:/downloads
+    ports:
+      - "6767:6767"
+    restart: unless-stopped
+    networks:
+      - mynetwork
+      
   jellyfin:
     profiles: ["base", "jelly", "stack-1", "stack-2"]
     image: linuxserver/jellyfin:10.8.10
@@ -194,7 +211,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=UTC
+      - TZ=Asia/Jerusalem
     volumes:
       - jellyfin-config:/config
       - torrent-downloads:/data
@@ -225,6 +242,8 @@ volumes:
   sonarr-config:
   jackett-config:
   jackett-blackhole:
+  bazarr-config:
+  bazarr-downloads:
   prowlarr-config:
   jellyfin-config:
   qbittorrent-config:
