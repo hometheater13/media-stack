@@ -221,7 +221,7 @@ services:
   heimdall:
     profiles: ["stack-1", "stack-2"]
     container_name: heimdall
-    image: linuxserver/heimdall
+    image: lscr.io/linuxserver/heimdall:latest
     environment:
       - PUID=1000
       - PGID=1000
@@ -229,8 +229,8 @@ services:
     volumes:
       - heimdall-config:/config
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
+      - 443:443
       # - "8083:80"
     restart: unless-stopped
     networks:
