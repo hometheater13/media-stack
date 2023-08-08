@@ -69,7 +69,7 @@ services:
       - PGID=1000
       - TZ=Asia/Jerusalem
       - USER=admin
-      - PASS=nimdatx
+      - PASS=admin
 
     ## Comment below ports if VPN is enabled.
     ports:
